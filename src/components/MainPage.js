@@ -22,12 +22,12 @@ const MainPage = () => {
     <div>
       <div id='header'>
         <div id='header-area'>
-          <img src='./images/images/icons/logo.png' alt='' />
+          <img src='images/icons/logo.png' alt='' />
         </div>
       </div>
       <div id='body'>
         <div id='banner'>
-          <img src='./images/banners/banner1.png' alt='' />
+          <img src='images/banners/banner1.png' alt='' />
         </div>
         <h1>Products</h1>
         <div id='product-list'>
