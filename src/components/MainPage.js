@@ -17,12 +17,11 @@ const MainPage = () => {
         console.log("error", error);
       });
   }, []);
-  console.log(products);
   return (
     <div>
       <div id='body'>
         <div id='banner'>
-          <img src='./images/banners/banner1.png' alt='' />
+          <img src='/images/banners/banner1.png' alt='' />
         </div>
         <h1>Products</h1>
         <div id='product-list'>
@@ -37,7 +36,7 @@ const MainPage = () => {
                     <span className='product-name'>{product.name}</span>
                     <span className='product-price'>{product.price}</span>
                     <div className='product-seller'>
-                      <img src='./images/icons/avatar.png' alt='product-avatar' className='product-avatar' />
+                      <img src='/images/icons/avatar.png' alt='product-avatar' className='product-avatar' />
                       <span>{product.seller}</span>
                     </div>
                   </div>
