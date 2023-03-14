@@ -6,7 +6,7 @@ import axios from "axios";
 const MainPage = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    let url = "https://ef587965-572a-40c0-9a18-bf0691453835.mock.pstmn.io/products";
+    let url = "http://127.0.0.1:8080/products";
     axios
       .get(url)
       .then((result) => {
