@@ -12,7 +12,7 @@ const ProductPage = () => {
     axios
       .get(url)
       .then((result) => {
-        setProduct(result.data);
+        setProduct(result.data.products);
       })
       .catch((error) => {
         console.log(error);
@@ -32,7 +32,7 @@ const ProductPage = () => {
         뒤로
       </button>
       <div id='image-box'>
-        <img src={`/${product.imageUrl}`} alt='' />
+        <img src={`/${product.imageUrl}`} alt='상품이미지' />
       </div>
       <div id='profile-box'>
         <img src='/images/icons/avatar.png' alt={product.seller} />
@@ -41,8 +41,8 @@ const ProductPage = () => {
       <div className='content-box'>
         <div id='name'>{product.name}</div>
         <div id='price'>{product.price}원</div>
-        <div id='createAt'>2023.03.10</div>
-        <div id='description'>{product.desc}</div>
+        <div id='createAt'>{product.createdAt}</div>
+        <div id='description'>{product.description}</div>
       </div>
     </div>
   );
