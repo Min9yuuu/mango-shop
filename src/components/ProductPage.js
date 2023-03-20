@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { API_URL } from "../config/constants.js";
+
 import axios from "axios";
 import "./ProductPage.css";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 const ProductPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   useEffect(() => {
-    let url = `http://127.0.0.1:8080/products/${id}`;
+    let url = `${API_URL}products/${id}`;
     axios
       .get(url)
       .then((result) => {
-        setProduct(result.data.products);
+        console.log(result);
+        setProduct(result.data.product);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
   if (product == null) {
-    return <h1>상품정보를 받고있습니다...</h1>;
+    return <h1>상품정보를 받고 있습니다...</h1>;
   }
   return (
     <div>
@@ -32,7 +38,7 @@ const ProductPage = () => {
         뒤로
       </button>
       <div id='image-box'>
-        <img src={`/${product.imageUrl}`} alt='상품이미지' />
+        <img src={`${API_URL}${product.imageUrl}`} alt={product.name} />
       </div>
       <div id='profile-box'>
         <img src='/images/icons/avatar.png' alt={product.seller} />
@@ -40,12 +46,11 @@ const ProductPage = () => {
       </div>
       <div className='content-box'>
         <div id='name'>{product.name}</div>
-        <div id='price'>{product.price}원</div>
-        <div id='createAt'>{product.createdAt}</div>
-        <div id='description'>{product.description}</div>
+        <div id='price'>{product.price}</div>
+        <div className='product-date'>상품등록일: {dayjs(product.createdAt).format("YY년MM월DD일-hh시MM분ss초")}</div>
+        <pre id='description'>{product.description}</pre>
       </div>
     </div>
   );
 };
-
 export default ProductPage;

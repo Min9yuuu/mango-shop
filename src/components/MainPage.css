@@ -73,6 +73,7 @@ a {
 .product-img {
   width: 100%;
   height: 210px;
+  object-fit: contain;
   transition: all 1s;
 }
 .product-img:hover {
